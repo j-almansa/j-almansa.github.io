@@ -1,0 +1,14 @@
+#container {
+  text-align: center;
+}
+#disciplines, #proglanguages {
+  height: 450px;
+  width: 700px;
+  border: 2px solid black;
+  display: inline-block;
+}
+
+.highcharts-title {
+    font-family: 'Ubuntu';
+    font-weight: bold;
+}

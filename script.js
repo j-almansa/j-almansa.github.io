@@ -20,8 +20,8 @@ layout = {
   title: {
     text: '<b>Disciplines</b>',
     font: {
-      family: 'Ubuntu',
-      size : 24
+      family: 'Open Sans',
+      size : 20
     }
   },
   showlegend: true, //this is default
@@ -108,7 +108,7 @@ function progLanguage(n) {
       title: {
         text: 'Programming Language Proficiency',
         style: {
-          fontSize: 24
+          fontSize: 20
         }
       },
       plotOptions: {

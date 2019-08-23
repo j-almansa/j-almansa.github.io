@@ -189,30 +189,45 @@ function progLanguage(n) {
 
 
 //---[Plotly: timeline]------------------------
+function stepahead(str) {
+  var date = str.split('-').map(x=>Number(x));
+  return (date[1]%12==0)? date[0]+1+ '-01': date[0] + '-' + ((date[1]<9)? '0':'') + (date[1]+1);
+}
+
+function getDates(startDate, stopDate) {
+  var dateArray = [];
+  var currentDate = startDate;
+  while (currentDate <= stopDate) {
+    dateArray.push(currentDate);
+    currentDate = stepahead(currentDate);
+  }
+  return dateArray;
+}
+
 var studies = {
   0: { degree: 'BSc Mathematics',
        institute: 'National University of Colombia',
        thesis: 'Syntax and Semantics of Simply-typed &lambda;calculus',
        duration: '4 years, 1 month',
-       years: [ 1991, 1992, 1993, 1994, 1995, 1996 ]
+       years: getDates('1991-01', '1996-09')//[ 1991, 1992, 1993, 1994, 1995, 1996 ]
      },
   1: { degree: 'MSc Software Eng.',
        institute: 'Los Andes University',
        thesis: 'A Type System for a Concurrent Constrained Calculus',
        duration: '2 years',
-       years: [ 1997, 1998 ]
+       years: getDates('1997-01', '1998-12')//[ 1997, 1998 ]
      },
   2: { degree: 'Phd Computer Science',
        institute: 'Aarhus University',
        thesis: 'A Study of Cryptologic Protocols',
        duration: '4 years',
-       years: [ 2001, 2002, 2003, 2004, 2005 ]
+       years: getDates('2001-09', '2005-09')//[ 2001, 2002, 2003, 2004, 2005 ]
      },
   3: { degree: 'MSc Mapping and Navigation',
        institute: 'DTU Space, Technical University of Denmark',
        thesis: '3D Reconstruction of Environments from Full Waveform LiDAR Data',
        duration: '2 years, 8 months',
-       years: [ 2013, 2014, 2015, 2016 ]
+       years: getDates('2013-09', '2016-05')//[ 2013, 2014, 2015, 2016 ]
      }
 };
 

@@ -1,4 +1,4 @@
-//---[Plotly Charts]------------------------
+//---[Plotly: radar chart]------------------------
 data = [
   {
   type: 'scatterpolar',
@@ -40,9 +40,9 @@ layout = {
 
 Plotly.plot("disciplines", data, layout, {showSendToCloud: true})
 
-//--------------------------------------------------------
 
-//---[Highcharts Charts]------------------------
+
+//---[Highcharts: parallel coordinates]------------------------
 var data2 = [
   [3, 2, 2, 3, 4, 4, 2, 2],
   [4, 5, 2, 2, 3, 1, 0, 0],
@@ -186,3 +186,109 @@ function progLanguage(n) {
     alert(res);
     return res;
 }*/
+
+
+//---[Plotly: timeline]------------------------
+var degrees =[ '<b>BSc Mathematics</b><br>' + 
+                   'National University of Colombia<br>' + 
+                   '4 years, 1 month',
+               'MSc Software Eng.',
+               'Phd Computer Science',
+               'MSc Mapping and Navigation'
+];
+
+var bachelor = [ 1991, 1992, 1993, 1994, 1995, 1996 ];
+var master1 = [ 1997, 1998 ];
+var phd = [ 2001, 2002, 2003, 2004, 2005 ];
+var master2 = [ 2013, 2014, 2015, 2016 ];
+var studies = { 0: bachelor,
+                1: master1,
+                2: phd,
+                3: master2 };
+
+var colors_studies = [
+  'rgba(160,75,187, 1)',
+  'rgba(235,212,68, 1)',
+  'rgba(68,124,235, 1)',
+  'rgba(235,68,68, 1)'
+];
+
+var data3 = [];
+
+for ( var idx in studies ) {
+  var trace = {
+    x: studies[idx],
+    y: Array(studies[idx].length).fill(15),
+    //hovermode: 'closest',
+    hovertext: Array(studies[idx].length).fill(degrees[Number(idx)]),
+    hoverinfo: Array(studies[idx].length).fill('x+text'),
+    name: degrees[ Number(idx) ].split('<br')[0],
+    type: 'scatter',
+    mode: 'lines',
+    line: {
+      color: colors_studies[ Number(idx) ],
+      width: 12
+    }
+  };
+  data3.push(trace);
+}
+
+
+var layout = {
+  title: {
+    text: '<b>Timeline</b>',
+    font: {
+      family: 'Open Sans',
+      size : 20
+    },
+    yref: 'paper',
+    y: 1
+  },
+  showlegend: true,
+  legend: {
+    //bordercolor: '#000',
+    //borderwidth: 1,
+    orientation: 'h',
+    //yref: 'paper',
+    y: -1
+  },
+  xaxis: {
+    showline: true,
+    showgrid: false,
+    showticklabels: true,
+    linecolor: 'rgb(204,204,204)',
+    linewidth: 2,
+    autotick: false,
+    tickmode: 'array',
+    //tickvals: xData,
+    ticktext: [1990, '', '', '', '', 1995, '', '', '', '',
+               2000, '', '', '', '', 2005, '', '', '', '',
+               2010, '', '', '', '', 2015, '', '', '', '',2020],
+    ticks: 'outside',
+    tickcolor: 'rgb(204,204,204)',
+    tickwidth: 2,
+    ticklen: 5,
+    tickfont: {
+      family: 'Arial',
+      size: 12,
+      color: 'rgb(82, 82, 82)'
+    }
+  },
+  yaxis: {
+    range: [0, 30],
+    showgrid: false,
+    zeroline: false,
+    showline: false,
+    showticklabels: false
+  },
+  autosize: false,
+  height: 250,
+  margin: {
+    autoexpand: false,
+    l: 0,//100
+    r: 0,//20
+    t: 30
+  },
+};
+
+Plotly.newPlot('studies', data3, layout, {showSendToCloud: true});

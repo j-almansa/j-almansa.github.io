@@ -189,22 +189,32 @@ function progLanguage(n) {
 
 
 //---[Plotly: timeline]------------------------
-var degrees =[ '<b>BSc Mathematics</b><br>' + 
-                   'National University of Colombia<br>' + 
-                   '4 years, 1 month',
-               'MSc Software Eng.',
-               'Phd Computer Science',
-               'MSc Mapping and Navigation'
-];
-
-var bachelor = [ 1991, 1992, 1993, 1994, 1995, 1996 ];
-var master1 = [ 1997, 1998 ];
-var phd = [ 2001, 2002, 2003, 2004, 2005 ];
-var master2 = [ 2013, 2014, 2015, 2016 ];
-var studies = { 0: bachelor,
-                1: master1,
-                2: phd,
-                3: master2 };
+var studies = {
+  0: { degree: 'BSc Mathematics',
+       institute: 'National University of Colombia',
+       thesis: 'Syntax and Semantics of Simply-typed &lambda;calculus',
+       duration: '4 years, 1 month',
+       years: [ 1991, 1992, 1993, 1994, 1995, 1996 ]
+     },
+  1: { degree: 'MSc Software Eng.',
+       institute: 'Los Andes University',
+       thesis: 'A Type System for a Concurrent Constrained Calculus',
+       duration: '2 years',
+       years: [ 1997, 1998 ]
+     },
+  2: { degree: 'Phd Computer Science',
+       institute: 'Aarhus University',
+       thesis: 'A Study of Cryptologic Protocols',
+       duration: '4 years',
+       years: [ 2001, 2002, 2003, 2004, 2005 ]
+     },
+  3: { degree: 'MSc Mapping and Navigation',
+       institute: 'DTU Space, Technical University of Denmark',
+       thesis: '3D Reconstruction of Environments from Full Waveform LiDAR Data',
+       duration: '2 years, 8 months',
+       years: [ 2013, 2014, 2015, 2016 ]
+     }
+};
 
 var colors_studies = [
   'rgba(160,75,187, 1)',
@@ -217,12 +227,15 @@ var data3 = [];
 
 for ( var idx in studies ) {
   var trace = {
-    x: studies[idx],
-    y: Array(studies[idx].length).fill(15),
+    x: studies[idx].years,
+    y: Array(studies[idx].years.length).fill(15),
     //hovermode: 'closest',
-    hovertext: Array(studies[idx].length).fill(degrees[Number(idx)]),
-    hoverinfo: Array(studies[idx].length).fill('x+text'),
-    name: degrees[ Number(idx) ].split('<br')[0],
+    hovertext: Array(studies[idx].years.length).fill( '<b>' + studies[idx].degree + '</b><br>' +
+                                                      studies[idx].institute + '<br>' +
+                                                      studies[idx].duration
+                                                    ),
+    hoverinfo: Array(studies[idx].years.length).fill('x+text'),
+    name: '<b>' + studies[idx].degree + '</b>',
     type: 'scatter',
     mode: 'lines',
     line: {

@@ -189,17 +189,17 @@ function progLanguage(n) {
 
 
 //---[Plotly: timeline]------------------------
-function stepahead(str) {
+function stepfwd(str) {
   var date = str.split('-').map(x=>Number(x));
   return (date[1]%12==0)? date[0]+1+ '-01': date[0] + '-' + ((date[1]<9)? '0':'') + (date[1]+1);
 }
 
-function getDates(startDate, stopDate) {
+function timelapse(startDate, stopDate) {
   var dateArray = [];
   var currentDate = startDate;
   while (currentDate <= stopDate) {
     dateArray.push(currentDate);
-    currentDate = stepahead(currentDate);
+    currentDate = stepfwd(currentDate);
   }
   return dateArray;
 }
@@ -209,41 +209,121 @@ var studies = {
        institute: 'National University of Colombia',
        thesis: 'Syntax and Semantics of Simply-typed &lambda;calculus',
        duration: '4 years, 1 month',
-       years: getDates('1991-01', '1996-09')//[ 1991, 1992, 1993, 1994, 1995, 1996 ]
+       years: timelapse('1991-01', '1996-09')
      },
   1: { degree: 'MSc Software Eng.',
        institute: 'Los Andes University',
        thesis: 'A Type System for a Concurrent Constrained Calculus',
        duration: '2 years',
-       years: getDates('1997-01', '1998-12')//[ 1997, 1998 ]
+       years: timelapse('1997-01', '1998-12')
      },
   2: { degree: 'Phd Computer Science',
-       institute: 'Aarhus University',
+       institute: 'BRICS, Aarhus University',
        thesis: 'A Study of Cryptologic Protocols',
        duration: '4 years',
-       years: getDates('2001-09', '2005-09')//[ 2001, 2002, 2003, 2004, 2005 ]
+       years: timelapse('2001-09', '2005-09')
      },
   3: { degree: 'MSc Mapping and Navigation',
        institute: 'DTU Space, Technical University of Denmark',
        thesis: '3D Reconstruction of Environments from Full Waveform LiDAR Data',
        duration: '2 years, 8 months',
-       years: getDates('2013-09', '2016-05')//[ 2013, 2014, 2015, 2016 ]
+       years: timelapse('2013-09', '2016-05')
+     }
+};
+
+var work = {
+  0: { position: 'Research Assistant',
+       employer: 'Los Andes University',
+       duties: 'investigated on typed OO+CP languages; implemented an application in a visual prog. language',
+       outcomes: 'íd.',
+       duration: '1 year',
+       years: timelapse('1997-06', '1998-06')
+     },
+  1: { position: 'Part-time Lecturer',
+       employer: 'National University of Colombia',
+       duties: 'lectured on vector calculus to undergraduates',
+       outcomes: 'effective speech, attentive listening, discussion enabling, ...',
+       duration: '5 months',
+       years: timelapse('1998-08', '1998-12')
+     },
+  2: { position: 'Part-time Lecturer',
+       employer: 'Colombian College of Engineering',
+       duties: 'lectured on foundational engineering subjects to undergraduates',
+       outcomes: 'íd.',
+       duration: '5 months',
+       years: timelapse('1998-08', '1998-12')
+     },
+  3: { position: 'Part-time Lecturer',
+       employer: 'Los Andes University',
+       duties: 'lectured on basic computer science subjects to undergraduates',
+       outcomes: 'íd.',
+       duration: '1 year, 3 months',
+       years: timelapse('2000-02', '2001-05')
+     },
+  4: { position: 'Teacher Assistant',
+       employer: 'Aarhus University',
+       duties: 'assisted undergraduate course on compiler construction',
+       outcomes: 'íd.',
+       duration: '4 months',
+       years: timelapse('2001-09', '2002-01')
+     },
+  5: { position: 'Postdoc Fellow',
+       employer: 'NTT Corporation',
+       duties: 'created a framework to analyze cryptographic schemes',
+       outcomes: 'íd.',
+       duration: '4 months',
+       years: timelapse('2005-12', '2008-12')
+     },
+  6: { position: 'Teacher Assistant',
+       employer: 'Technical University of Denmark',
+       duties: 'assisted undergraduate course on surveying and GIS',
+       outcomes: 'íd.',
+       duration: '1 month',
+       years: timelapse('2014-06', '2014-07')
+     },
+  7: { position: 'Intern',
+       employer: 'DHI GRAS',
+       duties: 'implemented a ConvNet for impervious-surface mapping',
+       outcomes: 'íd.',
+       duration: '3 months',
+       years: timelapse('2017-03', '2017-06')
+     },
+  8: { position: 'Data Scientist/Engineer',
+       employer: 'LiveIntent',
+       duties: 'implemented optimization and monitoring tasks in Scala',
+       outcomes: 'íd.',
+       duration: 'present',
+       years: timelapse('2018-08', '2019-09')
+     }
+};
+
+var other = {
+  0: { subject: 'Personal development',
+       where: 'Europe, Colombia, USA',
+       activities: 'self-learning, sports, traveling',
+       outcomes: 'íd.',
+       duration: '5 years',
+       years: timelapse('2009-08', '2013-08')
      }
 };
 
 var colors_studies = [
-  'rgba(160,75,187, 1)',
-  'rgba(235,212,68, 1)',
-  'rgba(68,124,235, 1)',
-  'rgba(235,68,68, 1)'
+  'rgba(131,191,67, 1)',
+  'rgba(248,255,0, 1)',
+  'rgba(0,54,116, 1)',
+  'rgba(184,50,50, 1)'
 ];
+
+var colors_work = '#818181';
+
+var colors_other = '#ff9a03';
 
 var data3 = [];
 
 for ( var idx in studies ) {
   var trace = {
     x: studies[idx].years,
-    y: Array(studies[idx].years.length).fill(15),
+    y: Array(studies[idx].years.length).fill(19),
     //hovermode: 'closest',
     hovertext: Array(studies[idx].years.length).fill( '<b>' + studies[idx].degree + '</b><br>' +
                                                       studies[idx].institute + '<br>' +
@@ -255,7 +335,56 @@ for ( var idx in studies ) {
     mode: 'lines',
     line: {
       color: colors_studies[ Number(idx) ],
-      width: 12
+      width: 15
+    }
+  };
+  data3.push(trace);
+}
+
+//-------------------------------------
+for ( var idx in work ) {
+  var trace = {
+    x: work[idx].years,
+    y: Array(work[idx].years.length).fill(12),
+    //hovermode: 'closest',
+    hovertext: Array(work[idx].years.length).fill( '<b>' + work[idx].position + '</b><br>' +
+                                                      work[idx].employer + '<br>' +
+                                                      work[idx].duration
+                                                    ),
+    hoverinfo: Array(work[idx].years.length).fill('x+text'),
+    name: '<b>Work</b>',
+    showlegend: ( Number(idx) < 1 )? true : false,
+    legendgroup: 'work',
+    type: 'scatter',
+    mode: 'lines',
+    line: {
+      color: colors_work,
+      width: 15
+    }
+  };
+  data3.push(trace);
+}
+
+
+//-------------------------------------
+for ( var idx in other ) {
+  var trace = {
+    x: other[idx].years,
+    y: Array(other[idx].years.length).fill(5),
+    //hovermode: 'closest',
+    hovertext: Array(other[idx].years.length).fill( '<b>' + other[idx].subject + '</b><br>' +
+                                                      other[idx].activities + '<br>' +
+                                                      other[idx].duration
+                                                    ),
+    hoverinfo: Array(other[idx].years.length).fill('x+text'),
+    name: '<b>Other</b>',
+    showlegend: ( Number(idx) < 1 )? true : false,
+    legendgroup: 'other',
+    type: 'scatter',
+    mode: 'lines',
+    line: {
+      color: colors_other,
+      width: 15
     }
   };
   data3.push(trace);
@@ -278,14 +407,14 @@ var layout = {
     //borderwidth: 1,
     orientation: 'h',
     //yref: 'paper',
-    y: -1
+    y: -0.3
   },
   xaxis: {
     showline: true,
     showgrid: false,
     showticklabels: true,
     linecolor: 'rgb(204,204,204)',
-    linewidth: 2,
+    linewidth: 6,
     autotick: false,
     tickmode: 'array',
     //tickvals: xData,
@@ -310,9 +439,9 @@ var layout = {
     showticklabels: false
   },
   autosize: false,
-  height: 250,
+  height: 300,
   margin: {
-    autoexpand: false,
+    autoexpand: true,
     l: 0,//100
     r: 0,//20
     t: 30

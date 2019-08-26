@@ -38,7 +38,7 @@ layout = {
   }
 }
 
-Plotly.plot("disciplines", data, layout, {showSendToCloud: true})
+Plotly.plot("disciplines", data, layout)
 
 
 
@@ -448,19 +448,110 @@ var layout = {
   },
 };
 
-Plotly.newPlot('studies', data3, layout, {showSendToCloud: true});
+Plotly.newPlot('studies', data3, layout);
 
 
-//---[CSS: horizontal stacked bar]------------------------
-var skills = ['management','communication','organization','research'];
+//---[Plotly: horizontal stacked bars]------------------------
 
-for (var i=0; i<skills.length; i++) {
-  var category = document.getElementsByClassName(skills[i]);
+//#e30b5d #db5572 #d07b89 #bf9aa0 #a6b7b9 #7ed3d1 #00eeeb
 
-  for (var element of category) {
-    var w = 30 * Number(element.getAttribute('strength'));
-    element.style.width = w + 'px';
-  }
+var strengths = document.getElementsByClassName('strengths');
+
+for (var i=0; i<strengths.length; i++) {
+    var values = strengths[i].getAttribute('values').split(',').map( n => 10*Number(n) );
+    var trace1 = {
+      x: [values[0]],
+      y: ['<b>Strengths</b>'],
+      name: 'Management',
+      hovertext: (values[0]/10).toString(),
+      hoverinfo: 'text',
+      orientation: 'h',
+      marker: {
+        color: '#e30b5d',
+        //width: 1
+      },
+      type: 'bar',
+      width: 0.10
+    };
+
+    var trace2 = {
+      x: [values[1]],
+      y: ['<b>Strengths</b>'],
+      name: 'Communication',
+      hovertext: (values[1]/10).toString(),
+      hoverinfo: 'text',
+      orientation: 'h',
+      type: 'bar',
+      width: 0.10,
+      marker: {
+        color: '#d07b89',
+        //width: 1
+      }
+    };
+
+    var trace3 = {
+      x: [values[2]],
+      y: ['<b>Strengths</b>'],
+      name: 'Organization',
+      hovertext: (values[2]/10).toString(),
+      hoverinfo: 'text',
+      orientation: 'h',
+      type: 'bar',
+      width: 0.10,
+      marker: {
+        color: '#7ed3d1',
+        //width: 1
+      }
+    };
+
+    var trace4 = {
+      x: [values[3]],
+      y: ['<b>Strengths</b>'],
+      name: 'Research',
+      hovertext: (values[3]/10).toString(),
+      hoverinfo: 'text',
+      orientation: 'h',
+      type: 'bar',
+      width: 0.10,
+      marker: {
+        color: '#00eeeb',
+        //width: 1
+      }
+    };
+
+    var data = [trace1, trace2, trace3, trace4];
+
+    var layout = {
+      barmode: 'stack',
+      xaxis:{
+        showgrid: false,
+        zeroline: false,
+        showline: false,
+        showticklabels: false
+      },
+      legend: {
+        orientation: 'h',
+        traceorder: 'normal',
+        y: 0.4
+      },
+      height: 150,
+      margin: {
+        t:0,
+        l:80,
+        r:0,
+        b:0
+      }
+    };
+
+    var options = {modeBarButtonsToRemove: ['sendDataToCloud',
+                                            'zoom2d',
+                                            'pan2d',
+                                            'select2d',
+                                            'lasso2d',
+                                            'zoomIn2d',
+                                            'zoomOut2d',
+                                            'autoScale2d',
+                                            'toggleSpikelines',
+                                            'hoverClosestCartesian']};
+    Plotly.newPlot(strengths[i], data, layout, options);
 }
-
-

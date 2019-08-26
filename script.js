@@ -271,7 +271,7 @@ var work = {
        employer: 'NTT Corporation',
        duties: 'created a framework to analyze cryptographic schemes',
        outcomes: 'íd.',
-       duration: '4 months',
+       duration: '3 years',
        years: timelapse('2005-12', '2008-12')
      },
   6: { position: 'Teacher Assistant',
@@ -314,7 +314,7 @@ var colors_studies = [
   'rgba(184,50,50, 1)'
 ];
 
-var colors_work = '#818181';
+var colors_work = '#82c2da';
 
 var colors_other = '#ff9a03';
 
@@ -414,7 +414,7 @@ var layout = {
     showgrid: false,
     showticklabels: true,
     linecolor: 'rgb(204,204,204)',
-    linewidth: 6,
+    linewidth: 2,
     autotick: false,
     tickmode: 'array',
     //tickvals: xData,
@@ -449,3 +449,18 @@ var layout = {
 };
 
 Plotly.newPlot('studies', data3, layout, {showSendToCloud: true});
+
+
+//---[CSS: horizontal stacked bar]------------------------
+var skills = ['management','communication','organization','research'];
+
+for (var i=0; i<skills.length; i++) {
+  var category = document.getElementsByClassName(skills[i]);
+
+  for (var element of category) {
+    var w = 30 * Number(element.getAttribute('strength'));
+    element.style.width = w + 'px';
+  }
+}
+
+

@@ -1,5 +1,7 @@
 body {
   color: #44391a;
+  font-family: 'Crimson Text', serif;
+  font-size: 18;
 }
 
 /* Fonts  */
@@ -11,7 +13,7 @@ h1, h2 {
 }
 
 h3 {
-  font-family: 'Crimson Text', serif;
+  /*font-family: 'Crimson Text', serif;*/
 }
 
 
@@ -38,8 +40,9 @@ old gold: #c9b037
 */
 section h2 {
   width: inherit;
-  border-top: 4px solid #d4af37;
+  /*border-top: 4px solid #d4af37;*/
   border-bottom: 2px solid #d4af37;
+  /*border-image: linear-gradient(to right, #d4af37, #dab64c, #dfbd60, #e4c573, #e9cc85, #f5ce98, #fcd2ac, #ffd7c0, #ffdeda, #ffe9f0, #fdf5fc, #ffffff) 1;*/
   margin: 0;
   padding: 0;
   text-indent: 1em;
@@ -57,13 +60,18 @@ section h3 {
 section > p {
   margin: 2em;
   text-align: justify;
-  font-family: 'Crimson Text', serif;
+  /*font-family: 'Crimson Text', serif;*/
   font-size: 20px;
 }
 
 section h3 + p {
     margin: 0 0 0 2em;
     padding: 0;
+}
+
+section h3 + p span {
+  font-style: italic;
+  font-weight: bold;
 }
 
 section > div {
@@ -93,7 +101,7 @@ section hr {
   padding: 0;
 }
 
-section a {
+section p a {
   float:left;
   display: inline-block;
   margin: 0;
@@ -101,12 +109,68 @@ section a {
   padding-right: 1em;
 }
 
-section a img {float: left;
+section p a img {float: left;
   border: 2px solid #d4af37;
   margin: 0;
   padding: 0;
   width: 65px;
 }
 
-h1 + a {
+
+section #media {
+  width: auto;
+  height:52px;
+  margin: 0;
+  margin-right: 2em;
+  border: 0;
+  padding: 0;
 }
+section #media a {
+  display: inline-block;
+  float: right;
+  margin:0;
+  border: 0;
+  padding: 0;
+}
+
+
+#outskills {/*border:1px solid blue;*/
+  /*width: 100px;*/
+  height: auto;
+  margin: 0;
+  margin-left: 2em;
+  margin-bottom: 2em;
+  padding: 0;
+  font-size: 20px;
+  font-style: italic;
+}
+#outskills span {
+  display: inline-block;
+  position: relative;
+  top: 10px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  height: 15px;
+  font-weight: bold;
+}
+/*
+#e30b5d #db5572 #d07b89 #bf9aa0 #a6b7b9 #7ed3d1 #00eeeb
+*/
+#outskills .management {
+  background: #e30b5d;
+  color: #fff; 
+}
+#outskills .communication {
+  background: #d07b89;
+  color: #fff;
+}
+#outskills .organization {
+  background: #7ed3d1;
+  color: #fff; 
+}
+#outskills .research {
+  background: #00eeeb;
+  color: #fff;
+}
+

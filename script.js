@@ -2,17 +2,30 @@
 data = [
   {
   type: 'scatterpolar',
-  r: [3.9, 2.8, 0.8, 0.7, 2.8, 3.9],
+  r: [0.5, 4.0, 4.5, 3.0, 4.5, 0.5],
   theta: ['Research','Theory','Programming', 'Applications', 'Strategy', 'Research'],
   fill: 'toself',
-  name: 'ML'
+  fillcolor: 'rgba(255, 0, 0, 0.4)',//'rgba(0, 164, 255, 0.4)'
+  line: { color: 'rgba(255, 0, 0, 1)' },
+  name: 'Deep Learning'
   },
   {
   type: 'scatterpolar',
-  r: [0.15, 1, 3.9, 3.1, 1.5, 0.15],
+  r: [0.5, 3.0, 4.0, 2.0, 4.5, 0.5],
   theta: ['Research','Theory','Programming', 'Applications', 'Strategy', 'Research'],
   fill: 'toself',
-  name: 'DL'
+  fillcolor: 'rgba(0, 255, 0 0.4)',//'rgba(255, 216, 0, 0.4)'
+  line: { color: 'rgba(0, 255, 0, 1)' },
+  name: 'Machine Learning'
+  },
+  {
+  type: 'scatterpolar',
+  r: [0.5, 3.0, 4.5, 2.0, 0.0, 0.5],
+  theta: ['Research','Theory','Programming', 'Applications', 'Strategy', 'Research'],
+  fill: 'toself',
+  fillcolor: 'rgba(0, 164, 255, 0.4)',
+  line: { color: 'rgba(0, 164, 255, 1)' },
+  name: 'Data Science'
   }
 ]
 
@@ -44,12 +57,11 @@ Plotly.plot("disciplines", data, layout)
 
 //---[Highcharts: parallel coordinates]------------------------
 var data2 = [
-  [3, 2, 2, 3, 4, 4, 2, 2],
-  [4, 5, 2, 2, 3, 1, 0, 0],
-  [2, 5, 3, 4, 5, 0, 4, 0],
-  [5, 4, 5, 5, 0, 1, 5, 0],
-  [0, 5, 0, 0, 4, 2, 3, 2],
-  [0, 3, 2, 0, 1, 0, 1, 2],
+  [4, 5, 2, 3, 4, 4, 2, 3], //Python
+  [3, 3, 2, 2, 3, 2, 2, 2], //Scala
+  [4, 4, 1, 3, 4, 4, 2, 3], //JavaScript
+  [4, 5, 0, 3, 4, 3, 2, 3], //Matlab
+  [2, 2, 1, 2, 2, 2, 0, 1] //Bash
 ];
 
 var Activities = [
@@ -92,7 +104,7 @@ function toLevel(v) {
 
 
 function progLanguage(n) {
-  var language = ['Python', 'Scala', 'JavaScript', 'Matlab', 'Bash','Another'];
+  var language = ['Python', 'Scala', 'JavaScript', 'Matlab', 'Bash'];
   return language[n];
 }
 
@@ -110,6 +122,13 @@ function progLanguage(n) {
         style: {
           fontSize: 20
         }
+      },
+      subtitle : {
+        text: '<a href="https://science.raphael.poss.name/programming-levels.html" target="_blank">self-assessment matrix</a>',
+          style: {
+            color: '#ccc',
+            fontSize: '11px'
+          }
       },
       plotOptions: {
         series: {
@@ -156,7 +175,7 @@ function progLanguage(n) {
       colors: ['rgba(0, 0, 255, 0.8)',
                'rgba(0, 164, 255, 0.8)',
                'rgba(0, 255, 0, 0.8)',
-               'rgba(255, 128, 0, 0.8)',
+               //'rgba(255, 128, 0, 0.8)',
                //'rgba(153, 102, 0, 0.8)',
                'rgba(255, 216, 0, 0.8)',
                'rgba(255, 0, 0, 0.8)'],

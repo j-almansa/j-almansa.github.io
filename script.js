@@ -5,8 +5,8 @@ data = [
   r: [0.5, 4.0, 4.5, 3.0, 4.5, 0.5],
   theta: ['Research','Theory','Programming', 'Applications', 'Strategy', 'Research'],
   fill: 'toself',
-  fillcolor: 'rgba(255, 0, 0, 0.4)',//'rgba(0, 164, 255, 0.4)'
-  line: { color: 'rgba(255, 0, 0, 1)' },
+  fillcolor: 'rgba(255, 0, 255, 0.4)',//red | 'rgba(0, 164, 255, 0.4)'
+  line: { color: 'rgba(255, 0, 255, 1)' },
   name: 'Deep Learning'
   },
   {
@@ -14,8 +14,8 @@ data = [
   r: [0.5, 3.0, 4.0, 2.0, 4.5, 0.5],
   theta: ['Research','Theory','Programming', 'Applications', 'Strategy', 'Research'],
   fill: 'toself',
-  fillcolor: 'rgba(0, 255, 0 0.4)',//'rgba(255, 216, 0, 0.4)'
-  line: { color: 'rgba(0, 255, 0, 1)' },
+  fillcolor: 'rgba(0, 255, 255 0.4)',//green | 'rgba(255, 216, 0, 0.4)'
+  line: { color: 'rgba(0, 255, 255, 1)' },
   name: 'Machine Learning'
   },
   {
@@ -23,8 +23,8 @@ data = [
   r: [0.5, 3.0, 4.5, 2.0, 0.0, 0.5],
   theta: ['Research','Theory','Programming', 'Applications', 'Strategy', 'Research'],
   fill: 'toself',
-  fillcolor: 'rgba(0, 164, 255, 0.4)',
-  line: { color: 'rgba(0, 164, 255, 1)' },
+  fillcolor: 'rgba(255, 255, 0, 0.4)',//'rgba(0, 164, 255, 0.4)'
+  line: { color: 'rgba(255, 255, 0, 1)' },
   name: 'Data Science'
   }
 ]
@@ -52,6 +52,76 @@ layout = {
 }
 
 Plotly.plot("disciplines", data, layout)
+
+
+
+
+//---[Plotly: sunburst]------------------------
+var ids = [
+  "root",
+    "FCP",
+      "FCP-MNIST", "FCP-Fashion",
+        "FCP-MNIST-TF1", "FCP-MNIST-TF2",
+    "CNN",
+      "CNN-MNIST", "CNN-Fashion",
+    "TL",
+      "TL-Cats&Dogs",
+    "RL",
+    "GAN"
+  ];
+var labels = [
+  "",
+    "FCP",
+      "MNIST", "Fashion",
+        "TF1", "TF2",
+    "CNN",
+      "MNIST", "Fashion",
+    "TL",
+      "Cats&Dogs",
+    "RL",
+    "GAN"
+  ];
+var parents = [
+  "",
+  "root",
+    "FCP", "FCP",
+      "FCP-MNIST","FCP-MNIST",
+  "root",
+    "CNN", "CNN",
+  "root",
+    "TL",
+  "root",
+  "root"
+];
+
+var data = [{
+  type: "sunburst",
+  ids: ids,
+  labels: labels,
+  parents: parents,
+  outsidetextfont: {size: 20, color: "#377eb8"},
+  leaf: {opacity: 0.7},
+  marker: {line: {width: 2}},
+  branchvalue: 'relative'
+}];
+
+var layout = {
+  title: {
+    text: '<b>DL Techniques</b>',
+    font: {
+      family: 'Open Sans',
+      size : 20
+    }
+  },
+  //margin: {l: 0, r: 0, b: 0, t:0},
+  sunburstcolorway:["#2CBFCA","#54D3D6","#75DDE0","#9DEBED","#D0EFF0"],
+};
+
+
+Plotly.newPlot('dltechniques', data, layout)
+
+
+
 
 
 
@@ -335,7 +405,7 @@ var colors_studies = [
 
 var colors_work = '#82c2da';
 
-var colors_other = '#ff9a03';
+var colors_other = '#ee99ee'//'#ff9a03';
 
 var data3 = [];
 

@@ -57,6 +57,7 @@ Plotly.plot("disciplines", data, layout)
 
 
 //---[Plotly: sunburst]------------------------
+/*
 var ids = [
   "root",
     "FCP",
@@ -119,6 +120,7 @@ var layout = {
 
 
 Plotly.newPlot('dltechniques', data, layout)
+*/
 
 
 

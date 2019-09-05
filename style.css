@@ -2,10 +2,11 @@ body {
   color: #44391a;
   font-family: 'Crimson Text', serif;
   font-size: 18;
+  background: #fcfcfc;   /*#9b9796*/
 }
 
 /* Fonts  */
-h1 { color: #000; }
+h1 { color: #000; }/*#000  #e7ca7f */ 
 h2 { color: #251f11; }
 
 h1, h2 {
@@ -20,7 +21,7 @@ h3 {
 h1 {
   border: 0;
   margin: 0;
-  margin-bottom: 1em;
+  margin-bottom: 2.5em;
   font-size: 52px;
   text-align: center;
 }
@@ -29,6 +30,9 @@ section {
   width: 800px;
   margin: 1em auto;
   margin-bottom: 5em;
+}
+section:first-of-type {
+  margin-bottom: 7em;
 }
 
 /*
@@ -39,9 +43,9 @@ old gold: #c9b037
 */
 section h2 {
   width: inherit;
-  /*border-top: 4px solid #d4af37;*/
-  border-bottom: 2px solid #d4af37;
-  /*border-image: linear-gradient(to right, #d4af37, #dab64c, #dfbd60, #e4c573, #e9cc85, #f5ce98, #fcd2ac, #ffd7c0, #ffdeda, #ffe9f0, #fdf5fc, #ffffff) 1;*/
+  /*border-top: 4px solid #d4af37; #e7ca7f*/
+  border-bottom: 2px solid #dfb845;
+  /*border-image: linear-gradient(to right, #e7ca7f, #dab64c, #dfbd60, #e4c573, #e9cc85, #f5ce98, #fcd2ac, #ffd7c0, #ffdeda, #ffe9f0, #fdf5fc, #ffffff) 1;*/
   margin: 0;
   padding: 0;
   text-indent: 1em;
@@ -98,7 +102,7 @@ section hr {
   height: 1px;
   width: 500px;
   border: 0;
-  border-top: 1px dashed #d4af37;
+  border-top: 1px dashed #dfb845;
   margin: 2em auto;
   padding: 0;
 }
@@ -112,7 +116,7 @@ section p a {
 }
 
 section p a img {float: left;
-  border: 2px solid #d4af37;
+  border: 2px solid #dfb845;
   margin: 0;
   padding: 0;
   width: 65px;
@@ -149,8 +153,12 @@ section #media a {
   text-align: center;
   margin: 1em 0 2em 0;
 }
-#photo img {
+#photo img {border:1px solid #fcfcfc;
   width: 180px;
   height: 180px;
   opacity: 0.85;
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  box-shadow: 2px 2px 12px 0px #888;
 }

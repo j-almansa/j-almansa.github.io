@@ -53,14 +53,26 @@ section h2 {
 }
 
 section h3 {
+  display: inline-block;
   width: inherit;
   margin: 1em 0 0 0;
   padding: 0;
   text-indent: 2em;
   font-size: 20px;
 }
+section h3 + h3 {
+  margin:0;
+}
 
-section > p {
+section h3 span {
+  margin: 0 0 0 1em;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+section > p,
+section h3 ~ p {
   margin: 2em;
   text-align: justify;
   /*font-family: 'Crimson Text', serif;*/
@@ -70,13 +82,12 @@ section:first-of-type p {
   margin-bottom: 0;
 }
 
-section h3 + p {
+section h3 ~ p {
     margin: 0 0 0 2em;
     padding: 0;
 }
 
-section h3 + p span {
-  font-style: italic;
+section h3 ~ p span {
   font-weight: bold;
 }
 

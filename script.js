@@ -395,6 +395,20 @@ var other = {
        outcomes: 'íd.',
        duration: '5 years',
        years: timelapse('2009-08', '2013-08')
+     },
+  1: { subject: 'Personal development',
+       where: 'Europe, Colombia, USA',
+       activities: 'self-learning, paternity leave',
+       outcomes: 'íd.',
+       duration: '8 months',
+       years: timelapse('2016-06', '2017-02')
+     },
+  2: { subject: 'Personal development',
+       where: 'Europe',
+       activities: 'self-learning',
+       outcomes: 'íd.',
+       duration: '1 year',
+       years: timelapse('2017-07', '2018-07')
      }
 };
 

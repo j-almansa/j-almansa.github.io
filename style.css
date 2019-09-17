@@ -150,8 +150,13 @@ section #media a {
 }
 
 #photo {
+  width: 800px;
   text-align: center;
-  margin: 1em 0 2em 0;
+  margin: 1em auto 2em auto;
+  /*background: #dfb845;
+  border-radius:2.5% / 10%;
+  -moz-border-radius:2.5% / 10%;
+  -webkit-border-radius:2.5% / 10%;*/
 }
 #photo img {border:1px solid #fcfcfc;
   width: 180px;

@@ -2,12 +2,21 @@
 data = [
   {
   type: 'scatterpolar',
-  r: [0.5, 4.0, 4.5, 3.0, 4.5, 0.5],
+  r: [0.5, 4.0, 4.5, 3.5, 4.5, 0.5],
   theta: ['Research','Theory','Programming', 'Applications', 'Strategy', 'Research'],
   fill: 'toself',
   fillcolor: 'rgba(255, 0, 255, 0.4)',//red | 'rgba(0, 164, 255, 0.4)'
   line: { color: 'rgba(255, 0, 255, 1)' },
   name: 'Deep Learning'
+  },
+  {
+  type: 'scatterpolar',
+  r: [0.5, 3.0, 4.5, 3.0, 3.0, 0.5],
+  theta: ['Research','Theory','Programming', 'Applications', 'Strategy', 'Research'],
+  fill: 'toself',
+  fillcolor: 'rgba(255, 255, 0, 0.4)',//'rgba(0, 164, 255, 0.4)'
+  line: { color: 'rgba(255, 255, 0, 1)' },
+  name: 'Data Science'
   },
   {
   type: 'scatterpolar',
@@ -17,15 +26,6 @@ data = [
   fillcolor: 'rgba(0, 255, 255 0.4)',//green | 'rgba(255, 216, 0, 0.4)'
   line: { color: 'rgba(0, 255, 255, 1)' },
   name: 'Machine Learning'
-  },
-  {
-  type: 'scatterpolar',
-  r: [0.5, 3.0, 4.5, 2.0, 0.0, 0.5],
-  theta: ['Research','Theory','Programming', 'Applications', 'Strategy', 'Research'],
-  fill: 'toself',
-  fillcolor: 'rgba(255, 255, 0, 0.4)',//'rgba(0, 164, 255, 0.4)'
-  line: { color: 'rgba(255, 255, 0, 1)' },
-  name: 'Data Science'
   }
 ]
 

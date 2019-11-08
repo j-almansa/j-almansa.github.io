@@ -383,8 +383,8 @@ var work = {
        employer: 'LiveIntent',
        duties: 'implemented optimization and monitoring tasks in Scala',
        outcomes: 'íd.',
-       duration: 'present',
-       years: timelapse('2018-08', '2019-09')
+       duration: '1 year, 2 months',
+       years: timelapse('2018-08', '2019-10')
      }
 };
 

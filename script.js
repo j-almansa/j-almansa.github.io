@@ -386,12 +386,12 @@ var work = {
        duration: '1 year, 2 months',
        years: timelapse('2018-08', '2019-10')
      },
-  8: { position: 'Consultant - Data Science',
+  9: { position: 'Consultant - Data Science',
        employer: 'Capgemini',
        duties: 'consulting in production-ready scalable data science solutions',
        outcomes: 'íd.',
-       duration: '7 months',
-       years: timelapse('2020-02', '2020-08')
+       duration: '6 months',
+       years: timelapse('2020-02', '2020-07')
      }
 };
 

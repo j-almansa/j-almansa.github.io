@@ -381,7 +381,14 @@ var work = {
      },
   8: { position: 'Data Scientist/Engineer',
        employer: 'LiveIntent',
-       duties: 'implemented optimization and monitoring tasks in Scala',
+       duties: 'implemented ETL tasks on a DWH in Scala',
+       outcomes: 'íd.',
+       duration: '1 year, 2 months',
+       years: timelapse('2018-08', '2019-10')
+     },
+  8: { position: 'Consultant - Data Science',
+       employer: 'Capgemini',
+       duties: 'consulting in production-ready scalable data science solutions',
        outcomes: 'íd.',
        duration: '1 year, 2 months',
        years: timelapse('2018-08', '2019-10')
@@ -407,8 +414,8 @@ var other = {
        where: 'Europe',
        activities: 'self-learning',
        outcomes: 'íd.',
-       duration: '1 year',
-       years: timelapse('2017-07', '2018-07')
+       duration: '7 months',
+       years: timelapse('2020-02', '2020-08')
      }
 };
 

@@ -390,8 +390,8 @@ var work = {
        employer: 'Capgemini',
        duties: 'consulting in production-ready scalable data science solutions',
        outcomes: 'íd.',
-       duration: '1 year, 2 months',
-       years: timelapse('2018-08', '2019-10')
+       duration: '7 months',
+       years: timelapse('2020-02', '2020-08')
      }
 };
 
@@ -414,8 +414,8 @@ var other = {
        where: 'Europe',
        activities: 'self-learning',
        outcomes: 'íd.',
-       duration: '7 months',
-       years: timelapse('2020-02', '2020-08')
+       duration: '1 year',
+       years: timelapse('2017-07', '2018-07')
      }
 };
 
